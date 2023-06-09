@@ -1,6 +1,8 @@
 # project-draft
 project week time get pumped 
 
+Team Members: Julio Ramirez, Lacey Washington, and KP Gomez.
+
 <hr>
 
 ## Cooperation Plan
