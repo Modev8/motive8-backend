@@ -15,10 +15,14 @@ Describe the individual features that your product will do.
 - The application will show a new motivational quote each time we log-in.
 - The application will allow others to post words of encouragement on our status.
 - The application will find us motivational music and images.
-  OUT - What will your product not do.
+  
+OUT - What will your product not do.
 - Our application will not allow any type of selling or advertising.
+
   These should be features that you will make very clear from the beginning that you will not do during development. These should be limited and very few. Pick your battles wisely. This should only be 1 or 2 things. Example: My website will never turn into an IOS or Android app.
-  Minimum Viable Product vs
+  
+  
+Minimum Viable Product vs
   What will your MVP functionality be?
 - Connect to Quote Garden API for inspiration quotes.
 - Connect to Unsplash API for images.
@@ -37,14 +41,21 @@ List the functionality of your product. This will consist of tasks such as the f
 - We will implement a back-end server to connect to the database for data storage and retrieval.
 - The back-end server will also be the go between for the client and our 3rd-party APIs.
 - Users will be able to log-in and see motivational content according to their personal goals.
-  **Examples:**
-  An admin can create and delete user accounts
-  A user can update their profile information
-  A user can search all of the products in the inventory
+
+**Examples:**
+  - An admin can create and delete user accounts
+  - A user can update their profile information
+  - A user can search all of the products in the inventory
 
 ### Data Flow
 
 Describe the flow of data in your application. Write out what happens from the time the user begins using the app to the time the user is done with the app. Think about the “Happy Path” of the application. Describe through visuals and text what requests are made, and what data is processed, in addition to any other details about how the user moves through the site.
+
+Preliminary methods
+- createComment()
+- editComment()
+- deleteComment()
+- viewComment()
 
 ### Non-Functional Requirements (301 & 401 only)
 
@@ -58,17 +69,8 @@ Pick 2 non-functional requirements and describe their functionality in your appl
 
 - We will utilize Auth0 to manage our user information such as emails, names, etc.
 - We will utilize MongoDB to store all of our user information.
-  If you are stuck on what non-functional requirements are, do a quick online search and do some research. Write a minimum of 3-5 sentences to describe how the non-functional requirements fits into your app.
+
+If you are stuck on what non-functional requirements are, do a quick online search and do some research. Write a minimum of 3-5 sentences to describe how the non-functional requirements fits into your app.
   You MUST describe what the non-functional requirement is and how it will be implemented. Simply saying “Our project will be testable for testibility” is NOT acceptable. Tell us how, why, and what.
 
-10:13
-preliminary methods
-10:13
-createComment()
-10:13
-editComment()
-10:13
-deleteComment()
-New
-10:13
-viewComment()
+
