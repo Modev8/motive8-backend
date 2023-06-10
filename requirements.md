@@ -3,6 +3,7 @@
 ### Vision
 
 1. What is the vision of this product? The vision we have for this project is to create an application that allows users to create their own safe spaces for themselves and improve their mental health along with their friends, family, or even complete strangers. The intention is no matter what challenge you post on your page or whatever challenge you may face in this world there are always motiva8ers out there for everyone, and this motivation can spark us to and push us to a greater achievement in life.
+
 2. What pain point does this project solve? To help lift us and get inspired to get things done.
 3. Why should we care about your product? Our product is meant to spread positivity and generate good vibes only.
 <hr>
@@ -23,7 +24,7 @@ OUT - What will your product not do.
   
   
 Minimum Viable Product vs
-  What will your MVP functionality be?
+- What will your MVP functionality be?
 - Connect to Quote Garden API for inspiration quotes.
 - Connect to Unsplash API for images.
 - Connect to a music API for feel-good songs.
@@ -72,5 +73,3 @@ Pick 2 non-functional requirements and describe their functionality in your appl
 
 If you are stuck on what non-functional requirements are, do a quick online search and do some research. Write a minimum of 3-5 sentences to describe how the non-functional requirements fits into your app.
   You MUST describe what the non-functional requirement is and how it will be implemented. Simply saying “Our project will be testable for testibility” is NOT acceptable. Tell us how, why, and what.
-
-
