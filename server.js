@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const userHandler = require('./Modules/userHandler');
+const getVids = require('./Modules/youtubeHandler');
 
 mongoose.connect(process.env.MONGODB_URL);
 
@@ -24,6 +25,8 @@ db.once('open', () => console.log('Mongoose is connected'));
 app.get('/', (req, res) => res.status(200).send('Default route working'));
 
 app.get('/book', userHandler.getUser);
+
+app.get('/shorts', getVids);
 
 app.use((err, req, res, next) => res.status(500).send(err.message));
 
