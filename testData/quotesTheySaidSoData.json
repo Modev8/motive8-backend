@@ -1,0 +1,32 @@
+{
+  "success": {
+    "total": 1
+  },
+  "contents": {
+    "quotes": [
+      {
+        "id": "onr9OyERqJMU8Ub4D_h3uQeF",
+        "quote": "An earned compliment costs nothing, but its returns are immeasurable. Very humanly, when we are complimented, when our efforts are appreciated, most of us will usually strive to perform even better down the line. What a return on the investment of delivering a few earned words of praise!",
+        "length": 288,
+        "author": "G. Kingsley Ward",
+        "language": "en",
+        "tags": [
+          "leadership",
+          "management",
+          "inspire",
+          "compliment"
+        ],
+        "sfw": "sfw",
+        "permalink": "https://theysaidso.com/quote/g-kingsley-ward-an-earned-compliment-costs-nothing-but-its-returns-are-immeasura",
+        "title": "Inspiring Quote of the day",
+        "category": "inspire",
+        "background": "https://theysaidso.com/assets/images/qod/qod-inspire.jpg",
+        "date": "2023-06-13"
+      }
+    ]
+  },
+  "copyright": {
+    "url": "https://quotes.rest",
+    "year": "2023"
+  }
+}
