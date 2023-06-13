@@ -12,9 +12,9 @@ class YoutubeData {
 }
 
 function getVids(req,res,next) {
-  const{motivation} = req.query;
-  const key = 'user motivation' + motivation;
-  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=motivation for ${motivation}&maxResults=10&key=${process.env.YOUTUBE_API_KEY}`;
+  const{q} = req.query;
+  const key = 'user motivation' + q;
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=motivation-for-${q}&maxResults=10&key=${process.env.YOUTUBE_API_KEY}`;
 
   cache[key] && (Date.now() - cache[key].timestamp < 86400 )
     ? res.status(200).send(cache[key])
