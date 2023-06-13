@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userHandler = require('./Modules/userHandler');
 const getVids = require('./Modules/youtubeHandler');
+const verifyUser = require('./Modules/Authorize');
 
 mongoose.connect(process.env.MONGODB_URL);
 
@@ -23,8 +24,9 @@ db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', () => console.log('Mongoose is connected'));
 
 app.get('/', (req, res) => res.status(200).send('Default route working'));
+app.use(verifyUser);
 
-app.get('/book', userHandler.getUser);
+app.get('/user', userHandler.getUser);
 
 app.get('/shorts', getVids);
 
