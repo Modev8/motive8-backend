@@ -3,7 +3,7 @@
 const axios = require('axios');
 const cache = require('./cache');
 
-// const Quote = require('../Model/quote');
+const Quote = require('../Model/quote');
 
 const quoteHandler = {};
 
@@ -34,7 +34,6 @@ quoteHandler.getQuotes = function (req, res, next) {
 
     const url = `https://zenquotes.io/api/quotes`;
 
-    // console.log(Date.now());
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
     let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
@@ -42,10 +41,7 @@ quoteHandler.getQuotes = function (req, res, next) {
 
     //unique identifier for the cache
     const key = 'quotes' + formattedDate;
-    // console.log(key);
-
-    // console.log(cache);
-
+  
     //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
     cache[key] && (Date.now() - cache[key].timestamp < 86400000)
         ? res.status(200).send(cache[key])
@@ -74,9 +70,6 @@ quoteHandler.getDailyQuote = function (req, res, next) {
 
     //unique identifier for the cache
     const key = 'daily quote' + formattedDate;
-    // console.log(key);
-
-    // console.log(cache);
 
     //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
     cache[key] && (Date.now() - cache[key].timestamp < 86400000)
@@ -90,16 +83,14 @@ quoteHandler.getDailyQuote = function (req, res, next) {
                     timestamp: Date.now()
                 };
                 console.log('from cache', cache[key]);
-                res.status(200).send(cache[key]); //removed .data[0]
+                res.status(200).send(cache[key]); 
             })
             .catch(error => next(error));
-
 }
 
 quoteHandler.getRandom = function (req, res, next) {
     const url = `https://zenquotes.io/api/random`;
 
-    // console.log(Date.now());
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
     let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
@@ -107,9 +98,6 @@ quoteHandler.getRandom = function (req, res, next) {
 
     //unique identifier for the cache
     const key = 'random quote' + formattedDate;
-    // console.log(key);
-
-    // console.log(cache);
 
     //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
     cache[key] && (Date.now() - cache[key].timestamp < 86400000)
@@ -123,7 +111,7 @@ quoteHandler.getRandom = function (req, res, next) {
                     timestamp: Date.now()
                 };
                 console.log('from cache', cache[key]);
-                res.status(200).send(cache[key]); //removed .data[0]
+                res.status(200).send(cache[key]); 
             })
             .catch(error => next(error));
 }
