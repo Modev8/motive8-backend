@@ -6,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userHandler = require('./Modules/userHandler');
 const getVids = require('./Modules/youtubeHandler');
-
+const quoteHandler = require('./Modules/quoteHandler')
 const verifyUser = require('./Modules/Authorize');
 
 mongoose.connect(process.env.MONGODB_URL);
