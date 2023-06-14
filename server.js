@@ -32,6 +32,14 @@ app.get('/photos', photoHandler.getPhoto);
 
 app.get('/shorts', getVids);
 
+app.get('/', (req, res) => res.status(200).send('Default route working'));
+
+app.get('/quotes', quoteHandler.getQuotes);
+app.get('/quotes', quoteHandler.addQuote);
+
+app.get('/daily', quoteHandler.getDailyQuote);
+app.get('/random', quoteHandler.getRandom);
+
 app.use((err, req, res, next) => res.status(500).send(err.message));
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
