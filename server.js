@@ -35,14 +35,9 @@ app.get('/shorts', getVids);
 app.get('/', (req, res) => res.status(200).send('Default route working'));
 
 app.get('/quotes', quoteHandler.getQuotes);
-<<<<<<< HEAD
-app.post('/quotes', quoteHandler.addQuote);
-=======
-app.get('/quotes', quoteHandler.addQuote);
->>>>>>> 7ec6c0cdbf03704046545ceb74608f604ddd2bc3
-
 app.get('/daily', quoteHandler.getDailyQuote);
 app.get('/random', quoteHandler.getRandom);
+app.post('/quotes', quoteHandler.addQuote);
 
 app.use((err, req, res, next) => res.status(500).send(err.message));
 
