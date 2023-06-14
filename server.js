@@ -33,7 +33,7 @@ app.get('/user', userHandler.getUser);
 app.get('/photos', photoHandler.getPhoto);
 
 app.get('/shorts', getVids);
-
+//
 app.get('/', (req, res) => res.status(200).send('Default route working'));
 
 app.get('/quotes', quoteHandler.getQuotes);
