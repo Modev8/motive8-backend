@@ -8,6 +8,7 @@ const quoteSchema = new Schema({
     quote: String,
     author: String, 
     blockquote: String, 
+    email: String
 })
 
 const quoteModel = mongoose.model('Quote', quoteSchema);
