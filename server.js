@@ -21,8 +21,6 @@ app.use(express.json());
 
 const PORT = process.env.PORT;
 
-mongoose.connect(process.env.MONGODB_URL);
-
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error'));
