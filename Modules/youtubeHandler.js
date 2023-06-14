@@ -15,6 +15,7 @@ function getVids(req,res,next) {
   const{q} = req.query;
   const key = 'user motivation' + q;
   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=motivation-for-${q}&maxResults=10&key=${process.env.YOUTUBE_API_KEY}`;
+  console.log(url);
 
   cache[key] && (Date.now() - cache[key].timestamp < 86400 )
     ? res.status(200).send(cache[key])

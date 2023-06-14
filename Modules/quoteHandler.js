@@ -89,4 +89,13 @@ quoteHandler.getRandom = function (req, res, next) {
   checkCache(req, res, next, url, key);
 };
 
+quoteHandler.addQuote = function (req, res, next) {
+    const newQuote = req.body;
+    console.log(req.body);
+    Quote.create({...newQuote, email: req.user.email })
+        .then(addedQuote => res.status(201).send(addedQuote))
+        .catch(err => next(err));
+}
+
+
 module.exports = quoteHandler;
