@@ -30,7 +30,7 @@ app.get('/book', userHandler.getUser); //probably need to change name of path
 app.get('/shorts', getVids);
 
 app.get('/quotes', quoteHandler.getQuotes);
-// app.get('/quotes', quoteHandler.addQuote);
+app.post('/quotes', quoteHandler.addQuote);
 
 app.get('/daily', quoteHandler.getDailyQuote);
 app.get('/random', quoteHandler.getRandom);
