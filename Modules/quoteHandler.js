@@ -42,7 +42,7 @@ function checkCache(req, res, next, url, key) {
                     data: formattedData,
                     timestamp: Date.now()
                 };
-                console.log('from cache', cache[key]);
+                // console.log('from cache', cache[key]);
                 res.status(200).send(cache[key]); //removed .data[0]
             })
             .catch(error => next(error));
@@ -68,7 +68,7 @@ quoteHandler.getDailyQuote = function (req, res, next) {
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
     let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
-    console.log(formattedDate);
+    // console.log(formattedDate);
 
     //unique identifier for the cache
     const key = 'daily quote' + formattedDate;
@@ -82,7 +82,7 @@ quoteHandler.getRandom = function (req, res, next) {
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
     let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
-    console.log(formattedDate);
+    // console.log(formattedDate);
 
     //unique identifier for the cache
     const key = 'random quote' + formattedDate;
@@ -92,7 +92,8 @@ quoteHandler.getRandom = function (req, res, next) {
 
 quoteHandler.addQuote = function (req, res, next) {
     const newQuote = req.body;
-    console.log(req.body);
+    console.log('req.user shows', req);
+    console.log(newQuote);
     Quote.create({...newQuote, email: req.user.email })
         .then(addedQuote => res.status(201).send(addedQuote))
         .catch(err => next(err));
