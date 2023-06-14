@@ -24,7 +24,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', () => console.log('Mongoose is connected'));
 
-// app.use(verifyUser);
+app.get('/', (req, res) => res.status(200).send('Default route working'));
 
 app.get('/user', userHandler.getUser);
 
@@ -32,12 +32,13 @@ app.get('/photos', photoHandler.getPhoto);
 
 app.get('/shorts', getVids);
 
-app.get('/', (req, res) => res.status(200).send('Default route working'));
 
+app.use(verifyUser);
 app.get('/quotes', quoteHandler.getQuotes);
+app.post('/quotes', quoteHandler.addQuote);
+
 app.get('/daily', quoteHandler.getDailyQuote);
 app.get('/random', quoteHandler.getRandom);
-app.post('/quotes', quoteHandler.addQuote);
 
 app.use((err, req, res, next) => res.status(500).send(err.message));
 
