@@ -30,8 +30,12 @@ app.get('/book', userHandler.getUser); //probably need to change name of path
 app.get('/shorts', getVids);
 
 app.get('/quotes', quoteHandler.getQuotes);
+// app.get('/quotes', quoteHandler.addQuote);
+
 app.get('/daily', quoteHandler.getDailyQuote);
 app.get('/random', quoteHandler.getRandom);
+
+
 
 app.use((err, req, res, next) => res.status(500).send(err.message));
 

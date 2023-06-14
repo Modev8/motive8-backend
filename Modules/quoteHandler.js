@@ -30,19 +30,8 @@ class QuoteData {
     }
 }
 
-quoteHandler.getQuotes = function (req, res, next) {
-
-    const url = `https://zenquotes.io/api/quotes`;
-
-    let date = new Date(Date.now());
-    let currentDate = date.toString().split(' ').slice(1, 4);
-    let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
-    console.log(formattedDate);
-
-    //unique identifier for the cache
-    const key = 'quotes' + formattedDate;
-  
-    //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
+//checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
+function checkCache(req, res, next, url, key) {
     cache[key] && (Date.now() - cache[key].timestamp < 86400000)
         ? res.status(200).send(cache[key])
         : axios.get(url)
@@ -59,10 +48,23 @@ quoteHandler.getQuotes = function (req, res, next) {
             .catch(error => next(error));
 }
 
+quoteHandler.getQuotes = function (req, res, next) {
+
+    const url = `https://zenquotes.io/api/quotes`;
+
+    let date = new Date(Date.now());
+    let currentDate = date.toString().split(' ').slice(1, 4);
+    let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
+
+    //unique identifier for the cache
+    const key = 'quotes' + formattedDate;
+
+    checkCache(req, res, next, url, key);
+}
+
 quoteHandler.getDailyQuote = function (req, res, next) {
     const url = `https://zenquotes.io/api/today`;
 
-    // console.log(Date.now());
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
     let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
@@ -71,21 +73,7 @@ quoteHandler.getDailyQuote = function (req, res, next) {
     //unique identifier for the cache
     const key = 'daily quote' + formattedDate;
 
-    //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
-    cache[key] && (Date.now() - cache[key].timestamp < 86400000)
-        ? res.status(200).send(cache[key])
-        : axios.get(url)
-            .then(response => response.data.map(quote => new QuoteData(quote)))
-            .then(formattedData => {
-                cache[key] = {};
-                cache[key] = {
-                    data: formattedData,
-                    timestamp: Date.now()
-                };
-                console.log('from cache', cache[key]);
-                res.status(200).send(cache[key]); 
-            })
-            .catch(error => next(error));
+    checkCache(req, res, next, url, key);
 }
 
 quoteHandler.getRandom = function (req, res, next) {
@@ -99,21 +87,7 @@ quoteHandler.getRandom = function (req, res, next) {
     //unique identifier for the cache
     const key = 'random quote' + formattedDate;
 
-    //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
-    cache[key] && (Date.now() - cache[key].timestamp < 86400000)
-        ? res.status(200).send(cache[key])
-        : axios.get(url)
-            .then(response => response.data.map(quote => new QuoteData(quote)))
-            .then(formattedData => {
-                cache[key] = {};
-                cache[key] = {
-                    data: formattedData,
-                    timestamp: Date.now()
-                };
-                console.log('from cache', cache[key]);
-                res.status(200).send(cache[key]); 
-            })
-            .catch(error => next(error));
+    checkCache(req, res, next, url, key);
 }
 
 module.exports = quoteHandler;
