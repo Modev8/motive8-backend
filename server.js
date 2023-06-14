@@ -9,8 +9,6 @@ const getVids = require('./Modules/youtubeHandler');
 
 const verifyUser = require('./Modules/Authorize');
 
-const quoteHandler = require('./Modules/quoteHandler');
-
 mongoose.connect(process.env.MONGODB_URL);
 
 const photoHandler = require('./Modules/PhotoHandler');
@@ -33,10 +31,15 @@ app.get('/user', userHandler.getUser);
 app.get('/photos', photoHandler.getPhoto);
 
 app.get('/shorts', getVids);
+
 app.get('/', (req, res) => res.status(200).send('Default route working'));
 
 app.get('/quotes', quoteHandler.getQuotes);
+<<<<<<< HEAD
 app.post('/quotes', quoteHandler.addQuote);
+=======
+app.get('/quotes', quoteHandler.addQuote);
+>>>>>>> 7ec6c0cdbf03704046545ceb74608f604ddd2bc3
 
 app.get('/daily', quoteHandler.getDailyQuote);
 app.get('/random', quoteHandler.getRandom);
