@@ -37,6 +37,7 @@ app.get('/shorts', getVids);
 
 
 app.use(verifyUser);
+app.get('/zenquotes', quoteHandler.getZenQuotes);
 app.get('/quotes', quoteHandler.getQuotes);
 app.post('/quotes', quoteHandler.addQuote);
 
