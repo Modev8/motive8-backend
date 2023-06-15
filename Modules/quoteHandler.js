@@ -48,13 +48,19 @@ quoteHandler.getQuotes = function (req, res, next) {
         .catch(err => console.error(err));
 }
 
-
 quoteHandler.addQuote = function (req, res, next) {
     const addedQuote = req.body;
     console.log(addedQuote);
     // console.log('req.user shows', req);
     Quote.create({ ...addedQuote, email: req.user.email })
         .then(newQuote => res.status(201).send(newQuote))
+        .catch(err => next(err));
+}
+
+quoteHandler.deleteQuote = function (req, res, next) {
+    const { id } = req.params;
+    Quote.findByIdAndDelete(id)
+        .then(res.status(200).send('deleted quote'))
         .catch(err => next(err));
 }
 
