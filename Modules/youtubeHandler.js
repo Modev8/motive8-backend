@@ -27,7 +27,6 @@ function getVids(req,res,next) {
           data: formattedData,
           timestamp: Date.now()
         };
-        // console.log('from cache',cache[key]);
         res.status(200).send({
           data: formattedData,
           timestamp: cache[key].timestamp
