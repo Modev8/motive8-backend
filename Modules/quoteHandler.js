@@ -7,20 +7,20 @@ const Quote = require('../Model/quote');
 
 const quoteHandler = {};
 
-const monthKey = {
-    Jan: '01',
-    Feb: '02',
-    Mar: '03',
-    Apr: '04',
-    May: '05',
-    Jun: '06',
-    Jul: '07',
-    Aug: '08',
-    Sep: '09',
-    Oct: '10',
-    Nov: '11',
-    Dec: '12'
-}
+// const monthKey = {
+//     Jan: '01',
+//     Feb: '02',
+//     Mar: '03',
+//     Apr: '04',
+//     May: '05',
+//     Jun: '06',
+//     Jul: '07',
+//     Aug: '08',
+//     Sep: '09',
+//     Oct: '10',
+//     Nov: '11',
+//     Dec: '12'
+// }
 
 class QuoteData {
     constructor(obj) {
@@ -54,10 +54,10 @@ quoteHandler.getQuotes = function (req, res, next) {
 
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
-    let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
+    // let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
 
     //unique identifier for the cache
-    const key = 'quotes' + formattedDate;
+    const key = 'quotes' + currentDate;
 
     checkCache(req, res, next, url, key);
 }
@@ -67,11 +67,11 @@ quoteHandler.getDailyQuote = function (req, res, next) {
 
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
-    let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
+    // let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
     // console.log(formattedDate);
 
     //unique identifier for the cache
-    const key = 'daily quote' + formattedDate;
+    const key = 'daily quote' + currentDate;
 
     checkCache(req, res, next, url, key);
 }
@@ -81,11 +81,11 @@ quoteHandler.getRandom = function (req, res, next) {
 
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
-    let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
+    // let formattedDate = currentDate[2] + '-' + monthKey[currentDate[0]] + '-' + currentDate[1];
     // console.log(formattedDate);
 
     //unique identifier for the cache
-    const key = 'random quote' + formattedDate;
+    const key = 'random quote' + currentDate;
 
     checkCache(req, res, next, url, key);
 }
