@@ -50,9 +50,7 @@ quoteHandler.getQuotes = function (req, res, next) {
 
 quoteHandler.addQuote = function (req, res, next) {
     const addedQuote = req.body;
-    console.log(addedQuote);
-    // console.log('req.user shows', req);
-    Quote.create({ ...addedQuote, email: req.user.email })
+    Quote.create({...addedQuote, email: req.user.email })
         .then(newQuote => res.status(201).send(newQuote))
         .catch(err => next(err));
 }
