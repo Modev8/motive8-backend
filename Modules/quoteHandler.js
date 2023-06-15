@@ -2,17 +2,16 @@
 
 const axios = require('axios');
 const cache = require('./cache');
-
 const Quote = require('../Model/quote');
 
 const quoteHandler = {};
 
 class QuoteData {
-    constructor(obj) {
-        this.quote = obj.q;
-        this.author = obj.a;
-        this.blockquote = obj.h;
-    }
+  constructor(obj) {
+    this.quote = obj.q;
+    this.author = obj.a;
+    this.blockquote = obj.h;
+  }
 }
 
 //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
@@ -34,41 +33,14 @@ function checkCache(req, res, next, url, key) {
 }
 
 quoteHandler.getQuotes = function (req, res, next) {
-
-    const url = `https://zenquotes.io/api/quotes`;
-
+  const url = `https://zenquotes.io/api/quotes`;
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
-
     //unique identifier for the cache
     const key = 'quotes' + currentDate;
+  checkCache(req, res, next, url, key);
+};
 
-    checkCache(req, res, next, url, key);
-}
-
-quoteHandler.getDailyQuote = function (req, res, next) {
-    const url = `https://zenquotes.io/api/today`;
-
-    let date = new Date(Date.now());
-    let currentDate = date.toString().split(' ').slice(1, 4);
-
-    //unique identifier for the cache
-    const key = 'daily quote' + currentDate;
-
-    checkCache(req, res, next, url, key);
-}
-
-quoteHandler.getRandom = function (req, res, next) {
-    const url = `https://zenquotes.io/api/random`;
-
-    let date = new Date(Date.now());
-    let currentDate = date.toString().split(' ').slice(1, 4);
-
-    //unique identifier for the cache
-    const key = 'random quote' + currentDate;
-
-    checkCache(req, res, next, url, key);
-}
 
 quoteHandler.addQuote = function (req, res, next) {
     const newQuote = req.body;
