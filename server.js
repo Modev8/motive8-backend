@@ -40,6 +40,7 @@ app.use(verifyUser);
 app.get('/zenquotes', quoteHandler.getZenQuotes);
 app.get('/quotes', quoteHandler.getQuotes);
 app.post('/quotes', quoteHandler.addQuote);
+app.delete('/quotes/:id', quoteHandler.deleteQuote);
 
 app.use((err, req, res, next) => res.status(500).send(err.message));
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
