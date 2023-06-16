@@ -26,7 +26,6 @@ db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', () => console.log('Mongoose is connected'));
 
 app.get('/', (req, res) => res.status(200).send('Default route working'));
-
 app.get('/photos', photoHandler.getPhoto);
 app.get('/shorts', getVids);
 
