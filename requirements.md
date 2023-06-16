@@ -54,13 +54,13 @@
 
 Describe the flow of data in your application. Write out what happens from the time the user begins using the app to the time the user is done with the app. Think about the “Happy Path” of the application. Describe through visuals and text what requests are made, and what data is processed, in addition to any other details about how the user moves through the site.
 
-**INSERT WRRC and other DIAGRAMS here**
+![Web Request/Response Cycle](Screenshot%202023-06-15%20at%209.45.02%20PM.png)
 
-Preliminary methods
-- createComment()
-- editComment()
-- deleteComment()
-- viewComment()
+CRUD Methods
+- addQuote()
+- getQuotes()
+- updateFaveQuote()
+- deleteQuote()
 
 <hr>
 
