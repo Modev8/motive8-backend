@@ -28,7 +28,7 @@
 - Connect to Zen Quotes API for motivational quotes. 
 - Connect to Unsplash API for motivational images.
 - Connect to Youtube API for motivational videos.
-- Get all three motivational content 
+- Get all three motivational content to render.
 
 **Stretch Goals**
 
