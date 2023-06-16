@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  title: String,
-  description: String,
+  name: String,
   email: String,
+  faveQuote: String
 });
 
 const userModel = mongoose.model('User', userSchema);

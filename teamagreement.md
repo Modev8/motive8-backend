@@ -1,5 +1,4 @@
-# project-draft
-project week time get pumped 
+# Motiv8
 
 Team Members: Julio Ramirez, Lacey Washington, and KP Gomez.
 
@@ -10,9 +9,11 @@ Every person on your team is an asset. This is your chance to discover the hidde
 
 Describe at least:
 
-1. What are the key strengths of each person on the team? Julio is skilled in logical-thinking as well as building out the back-end servers. Lacey is highly creative and his strengths include both the front-end and back-end. KP is really good at finding resources for the project and completing administrative stuff. She is more comfortable with the back-end servers.
+1. What are the key strengths of each person on the team? 
 
-2. How can you best utilize these strengths in the execution of your project? Julio will use his forte in logical thinking to figure out what's working and what's not working. Lacey will use his strengths to innovate and come up with new and creative solutions. **KP will use her strengths to**
+Julio is skilled in logical-thinking as well as building out the back-end servers. Lacey is highly creative and his strengths include both the front-end and back-end. KP is really good at finding resources for the project and completing administrative stuff. She is more comfortable with the back-end servers.
+
+2. How can you best utilize these strengths in the execution of your project? Julio will use his forte in logical thinking to figure out what's working and what's not working. Lacey will use his strengths to innovate and come up with new and creative solutions. KP will use her strengths to
 
 3. In which professional competencies do you each want to develop greater strength? Lacey would like to improve on his time and project management skills. KP would like to improve on her communication skills and learning how to express her ideas more articulately. Julio would like to work on his communication and leadership skills.
 

@@ -26,16 +26,18 @@ db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', () => console.log('Mongoose is connected'));
 
 app.get('/', (req, res) => res.status(200).send('Default route working'));
-
-app.get('/user', userHandler.getUser);
 app.get('/photos', photoHandler.getPhoto);
 app.get('/shorts', getVids);
 
 app.use(verifyUser);
+app.get('/user', userHandler.getUser);
+// app.put('/user', userHandler.updateFaveQuote);
+
 app.get('/zenquotes', quoteHandler.getZenQuotes);
 app.get('/quotes', quoteHandler.getQuotes);
 app.post('/quotes', quoteHandler.addQuote);
 app.delete('/quotes/:id', quoteHandler.deleteQuote);
+app.put('quotes/:id', quoteHandler.updateFave);
 
 app.use((err, req, res, next) => res.status(500).send(err.message));
 app.listen(PORT, () => console.log(`listening on ${PORT}`));

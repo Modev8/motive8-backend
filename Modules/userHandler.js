@@ -12,4 +12,13 @@ userHandler.getUser = function (req, res, next) {
     .catch((err) => next(err));
 };
 
+// userHandler.updateFaveQuote = function (req, res, next) {
+//   let {id} = req.params;
+//   const data = req.body;
+
+//   User.findByIdAndUpdate(id, {...data, email: req.user.email}, {new: true, overwrite: true})
+//     .then(updatedQuote => res.status(200).send(updatedQuote))
+//     .catch(err => next(err));
+// }
+
 module.exports = userHandler;

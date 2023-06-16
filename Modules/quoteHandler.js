@@ -7,11 +7,13 @@ const Quote = require('../Model/quote');
 const quoteHandler = {};
 
 class QuoteData {
-  constructor(obj) {
-    this.quote = obj.q;
-    this.author = obj.a;
-    this.blockquote = obj.h;
-  }
+
+    constructor(obj) {
+        this.quote = obj.q;
+        this.author = obj.a;
+        this.blockquote = obj.h;
+        this.faveQuote = false
+    }
 }
 
 //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
@@ -64,5 +66,12 @@ quoteHandler.deleteQuote = function (req, res, next) {
     .then(res.status(200).send('deleted quote'))
     .catch((err) => next(err));
 };
+
+quoteHandler.updateFave = function (req, res, next){
+    const {id} = req.params;
+    Quote.findByIdAndUpdate(id)
+    .then(res.status(200).send('updated fave quote'))
+    .catch(err => next(err));
+}
 
 module.exports = quoteHandler;
