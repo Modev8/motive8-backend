@@ -9,8 +9,8 @@ function verifyUser(request, response, next) {
 
   try {
     const token = request.headers.authorization.split(' ')[1];
-    console.log('message');
-    console.log(token);
+    // console.log('message');
+    // console.log(token);
     jwt.verify(token, getKey, {}, valid);
   } catch (error) {
     next('Not Authorized');
@@ -28,10 +28,10 @@ const client = jwksClient({
 
 // Match the JWT's key to your Auth0 Account Key so we can validate it
 function getKey(header, callback) {
-  console.log(header.kid);
+  // console.log(header.kid);
   // console.log(client);
   client.getSigningKey(header.kid, function (err, key) {
-    console.log('E', err);
+    // console.log('E', err);
     const signingKey = key.publicKey || key.rsaPublicKey;
     callback(null, signingKey);
   });
