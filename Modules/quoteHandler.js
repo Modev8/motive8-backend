@@ -7,11 +7,12 @@ const Quote = require('../Model/quote');
 const quoteHandler = {};
 
 class QuoteData {
-  constructor(obj) {
-    this.quote = obj.q;
-    this.author = obj.a;
-    this.blockquote = obj.h;
-  }
+    constructor(obj) {
+        this.quote = obj.q;
+        this.author = obj.a;
+        this.blockquote = obj.h;
+        this.faveQuote = false
+    }
 }
 
 //checking if cache with key exists, 86400000 is number of milliseconds in 24 hours
@@ -32,23 +33,43 @@ function checkCache(req, res, next, url, key) {
             .catch(error => next(error));
 }
 
-quoteHandler.getQuotes = function (req, res, next) {
-  const url = `https://zenquotes.io/api/quotes`;
+quoteHandler.getZenQuotes = function (req, res, next) {
+    const url = `https://zenquotes.io/api/quotes`;
     let date = new Date(Date.now());
     let currentDate = date.toString().split(' ').slice(1, 4);
     //unique identifier for the cache
     const key = 'quotes' + currentDate;
-  checkCache(req, res, next, url, key);
+    checkCache(req, res, next, url, key);
 };
 
+quoteHandler.getQuotes = function (req, res, next) {
+    let queryObject = { email: req.user.email };
+    Quote.find(queryObject)
+        .then(data => res.status(200).send(data))
+        .catch(err => console.error(err));
+}
 
 quoteHandler.addQuote = function (req, res, next) {
-    const newQuote = req.body;
-    console.log('req.user shows', req);
-    console.log(newQuote);
-    Quote.create({...newQuote, email: req.user.email })
-        .then(addedQuote => res.status(201).send(addedQuote))
+    const addedQuote = req.body;
+    console.log(addedQuote);
+    // console.log('req.user shows', req);
+    Quote.create({ ...addedQuote, email: req.user.email })
+        .then(newQuote => res.status(201).send(newQuote))
         .catch(err => next(err));
+}
+
+quoteHandler.deleteQuote = function (req, res, next) {
+    const { id } = req.params;
+    Quote.findByIdAndDelete(id)
+        .then(res.status(200).send('deleted quote'))
+        .catch(err => next(err));
+}
+
+quoteHandler.updateFave = function (req, res, next){
+    const {id} = req.params;
+    Quote.findByIdAndUpdate(id)
+    .then(res.status(200).send('updated fave quote'))
+    .catch(err => next(err));
 }
 
 module.exports = quoteHandler;
