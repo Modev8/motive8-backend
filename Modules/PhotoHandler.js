@@ -1,16 +1,16 @@
 'use strict';
 
-const Photo = require('../Model/photo');
+// const Photo = require('../Model/photo');
 const axios = require('axios');
 const photoHandler = {};
 
 class PhotoData {
   constructor(obj) {
     (this.title = obj.description),
-      (this.description = obj.alt_description),
-      (this.imageURL = obj.urls.small),
-      (this.creator = obj.user.name),
-      (this.portfolio = obj.user.social.portfolio_url);
+    (this.description = obj.alt_description),
+    (this.imageURL = obj.urls.small),
+    (this.creator = obj.user.name),
+    (this.portfolio = obj.user.social.portfolio_url);
   }
 }
 

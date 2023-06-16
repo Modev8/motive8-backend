@@ -20,20 +20,20 @@ function getVids(req, res, next) {
   cache[key] && Date.now() - cache[key].timestamp < 86400
     ? res.status(200).send(cache[key])
     : axios
-        .get(url)
-        .then((res) => res.data.items.map((v) => new YoutubeData(v)))
-        .then((formattedData) => {
-          cache[key] = {};
-          cache[key] = {
-            data: formattedData,
-            timestamp: Date.now(),
-          };
-          res.status(200).send({
-            data: formattedData,
-            timestamp: cache[key].timestamp,
-          });
-        })
-        .catch((err) => next(err));
+      .get(url)
+      .then((res) => res.data.items.map((v) => new YoutubeData(v)))
+      .then((formattedData) => {
+        cache[key] = {};
+        cache[key] = {
+          data: formattedData,
+          timestamp: Date.now(),
+        };
+        res.status(200).send({
+          data: formattedData,
+          timestamp: cache[key].timestamp,
+        });
+      })
+      .catch((err) => next(err));
 }
 
 module.exports = getVids;
