@@ -69,7 +69,8 @@ quoteHandler.deleteQuote = function (req, res, next) {
 
 quoteHandler.updateFave = function (req, res, next) {
   const { id } = req.params;
-  const { data } = req.body;
+  const data = req.body;
+  console.log(data);
 
   Quote.findByIdAndUpdate(id, { ...data, email: req.user.email }, { new: true, overwrite: true })
     .then(updatedQuote => res.status(200).send(updatedQuote))
